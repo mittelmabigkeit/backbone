@@ -51,7 +51,6 @@ $(function() {
 
     var tasksView = new App.Views.Tasks({ collection: tasksCollection });
 
-    tasksView.render();
-    $('body').html(tasksView.el);
+    $('.tasks').html(tasksView.render().el);
 
 });
