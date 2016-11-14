@@ -10,11 +10,18 @@ $(function() {
     };
 
     App.Models.Task = Backbone.Model.extend({});
+
     App.Views.Task = Backbone.View.extend({
         tagName: 'li',
         render: function () {
             this.$el.html( this.model.get('title'));
             return this;
+        },
+        events:{
+            'click': 'showAlert'
+        },
+        showAlert: function (){
+            alert('Вы кликнули по мышке !');
         }
     });
 
