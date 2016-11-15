@@ -9,7 +9,13 @@ $(function() {
         return _.template( $('#' + id). html() );
     };
 
-    App.Models.Task = Backbone.Model.extend({});
+    App.Models.Task = Backbone.Model.extend({
+        validate: function(attrs) {
+            if (! $.trim(attrs.title)) {
+                return 'Имя задачи должно быть валидным !';
+            }
+        }
+    });
 
     App.Views.Task = Backbone.View.extend({
         initialize: function() {
@@ -27,6 +33,7 @@ $(function() {
         },
         editTask: function () {
             var newTaskTitle = prompt('Как переименуем задачу ?', this.model.get('title'));
+            //if ( !newTaskTitle ) return;
             this.model.set('title', newTaskTitle);
         }
     });
