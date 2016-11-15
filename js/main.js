@@ -12,6 +12,9 @@ $(function() {
     App.Models.Task = Backbone.Model.extend({});
 
     App.Views.Task = Backbone.View.extend({
+        initialize: function() {
+            this.model.on('change', this.render, this);
+        },
         tagName: 'li',
         template: template('taskTemplate'),
         render: function () {
